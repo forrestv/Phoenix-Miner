@@ -201,11 +201,6 @@ class KernelInterface(object):
         # nonce is invalid, it will be caught anyway...
         nonce &= 0xFFFFFFFF
 
-        # Check if the block has changed while this NonceRange was being
-        # processed by the kernel. If so, don't send it to the server.
-        if self.miner.queue.isRangeStale(nr):
-            return False
-
         # Check if the hash meets the full difficulty before sending.
         hash = self.calculateHash(nr, nonce)
 

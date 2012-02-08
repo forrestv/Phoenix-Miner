@@ -70,10 +70,6 @@ class WorkQueue(object):
         # in the future.
         self.staleCallbacks = []
 
-    # Called by foundNonce to check if a NonceRange is stale before submitting
-    def isRangeStale(self, nr):
-        return (nr.unit.identifier != self.block)
-
     def storeWork(self, aw):
 
         #check if this work matches the previous block
